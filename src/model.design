@@ -1,0 +1,24 @@
+Models:
+
+Blog:
+  - id : uuid
+  - user : string
+  - blog_title : string
+  - blog_url   : url
+  - created on : timestamp
+ 
+Post
+  - id : uuid
+  - blog_id : uuid
+  - title : string
+  - body : blob
+  - created_on : timestamp
+  - modified_on : timestamp
+  - tags : list
+  
+# If nosql doesn't support tags as list and does not allow searching through those tags then
+# following model is used for tags
+Tag
+  - id
+  - post_id
+  - names

@@ -1,0 +1,21 @@
+{% extends "base.html" %} {% block content %}
+
+<table class="table">
+	<tr>
+		<th>Title
+		</td>
+		<th>Url
+		</td>
+		<th>Created on
+		</td>
+	</tr>
+	{% for blog in blogs %}
+	<tr>
+		<td>{{ blog.title }}</td>
+		<td><a href="/blogs/{{ blog.key().id() }}/posts">{{ blog.name
+				}}</a></td>
+		<td>{{ blog.created_on.strftime('%Y-%m-%d') }}</td>
+	</tr>
+	{% endfor %}
+</table>
+{% endblock content %}

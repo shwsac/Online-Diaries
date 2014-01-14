@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Shweta's Blog Application</title>
+
+<!-- Bootstrap core CSS -->
+<link rel="stylesheet" href="/static/css/bootstrap.min.css">
+<script src="https://code.jquery.com/jquery.js"></script>
+<script src="/static/js/bootstrap.min.js"></script>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+</head>
+
+<body style="padding-top:70px;">
+	<div id="fb-root"></div>
+	<!-- Fixed navbar -->
+	<div class="navbar navbar-default navbar-fixed-top" role="navigation">
+		<div class="container">
+			<div class="navbar-header">
+				<a class="navbar-brand" href="/">Shweta's Blog Application</a>
+			</div>
+			<div class="navbar-collapse collapse">
+				<ul class="nav navbar-nav navbar-right">
+					{% if user %}
+					<li class="navbar-text">Hi, {{ user.nickname() }}</li>
+					<li><a href="/my/blogs">My Dashboard</a></li>
+					<li><a href="{{ logoutUrl }} ">Logout</a></li>
+					 {% else %}
+					<li><a href="{{ loginUrl }} ">Login</a></li> {% endif %}
+				</ul>
+			</div>
+			<!--/.nav-collapse -->
+		</div>
+	</div>
+
+	<div class="container">
+	<div class="fb-like" data-href="{{ request.url }}" data-layout="standard" data-action="like" data-show-faces="true" data-share="true"></div>
+	<a href="https://twitter.com/share" class="twitter-share-button">Tweet</a>
+	<div class="g-plusone"></div>
+	
+	<!-- Place this tag after the last +1 button tag. -->
+	<script type="text/javascript">
+	  (function() {
+	    var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+	    po.src = 'https://apis.google.com/js/platform.js';
+	    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+	  })();
+	</script>
+	{% block content %} {% endblock content %}
+	</div>
+</body>
+</html>

@@ -1,0 +1,21 @@
+{% extends "base.html" %} {% block content %}
+<div class="jumbotron">
+<table class="table">
+	<tr>
+		<th>Thumbnail</th>
+		<th>Link</th>
+		<th>Edit options</th>
+
+	</tr>
+	{% for image in images %}
+	<tr>
+		<td><img class="img-thumbnail" src="/images/{{ image.key().id() }}"</td>
+		<td>{{ blog.author }}</a></td>
+		<td>{{ blog.created_on.strftime('%Y-%m-%d %H:%M') }}</td>
+	</tr>
+	{% else %}
+	There are currently no blogs created by anyone. Please login and create a new one!
+	{% endfor %}
+</table>
+</div>
+{% endblock content %}

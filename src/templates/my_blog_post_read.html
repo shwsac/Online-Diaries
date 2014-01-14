@@ -1,0 +1,22 @@
+{% extends "base.html" %} {% block content %}
+<div class="panel panel-default">
+	<div class="panel-heading">
+		<h3 class="panel-title">{{ blogPost.title }}</h3>
+	</div>
+	<div class="panel-body" style="white-space: pre-wrap;">{{ blogPost.body|safe|urlize }}</div>
+	<div class="panel-footer">
+		<label>tags:</label> {% for tag in blogPost.tags %} <small><a
+			class="btn btn-default"
+			href="/my/blogs/{{ blog.key().id() }}/posts/tag/{{tag}}">{{tag}}</a></small>
+		{% endfor %} <small>created on: {{
+			blogPost.created_on.strftime('%Y-%m-%d %H:%M') }}</small> <small>modified
+			on: {{ blogPost.modified_on.strftime('%Y-%m-%d %H:%M') }}</small>
+		<div class="pull-right">
+			<a class="btn btn-default"
+				href="/my/blogs/{{ blog.key().id() }}/posts/{{ blogPost.key().id() }}/edit">Edit</a>
+			<a class="btn btn-default"
+				href="/my/blogs/{{ blog.key().id() }}/posts/{{ blogPost.key().id() }}/delete">Delete</a>
+		</div>
+	</div>
+</div>
+{% endblock content %}

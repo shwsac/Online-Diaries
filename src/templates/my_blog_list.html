@@ -1,0 +1,25 @@
+{% extends "base.html" %} 
+
+{% block content %}
+
+<p><a href="/my/blogs/create">Create New Blog</a></p>
+{% if blogs %}
+<table class="table">
+	<tr>
+		<th>Title</th>
+		<th>Created on</th>
+		<th>Edit</th>
+		<th>Delete</th>
+
+	</tr>
+	{% for blog in blogs %}
+	<tr>
+		<td><a href="/my/blogs/{{ blog.key().id() }}/posts">{{ blog.title }}</a></td>
+		<td>{{ blog.created_on.strftime('%Y-%m-%d') }}</td>
+		<td><a href="/my/blogs/{{ blog.key().id() }}/edit">Edit</a></td>
+		<td><a href="/my/blogs/{{ blog.key().id()}}/delete">Delete</a></td>
+	</tr>
+	{% endfor %}
+</table>
+{% endif %}
+{% endblock content %}

@@ -1,0 +1,8 @@
+{% extends "base.html" %} 
+{% block content %}
+<form action="" method="post" role="form">
+	<p>Are you sure you want to delete blog {{ blog.title }} and all the posts associated with it?</p>
+	<button type="submit" class="btn btn-warning">Submit</button>
+	<a type="cancel" class="btn btn-default" href="/my/blogs">Cancel</a>
+</form>
+{% endblock content %}

@@ -1,0 +1,7 @@
+{% extends "base.html" %} 
+{% block content %}
+<div class="well">
+Your image can be viewed <a href="/my/image/get/{{ source }}">here</a>. You can also right click and copy the permalink to use it at other places. 
+</div>
+<img src = "/my/image/get/{{ source }}" class = "img-thumbnail"></img>
+{% endblock content %}

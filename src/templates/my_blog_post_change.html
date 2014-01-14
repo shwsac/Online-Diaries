@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block content %}
+ 
+<form action="" method="post" role="form">
+	<div class="form-group">
+		<label for="TitleInput">Title</label>
+    	<input type="String" class="form-control" name= "title" id="TitleInput" placeholder="Enter Title" {% if blogPost %} value="{{ blogPost.title }}" {% endif %}/>
+	</div>
+	<div class="form-group">
+		<label for="BodyInput">Content</label>
+    	<textarea class="form-control" name= "body" id="BodyInput" placeholder="Enter Data">{% if blogPost %}{{ blogPost.body }}{% endif %}</textarea>
+	</div>
+	<div class="form-group">
+		<label for="TagsInput">Tags</label>
+    	<input type="String" class="form-control" name= "tags" id="TagsInput" placeholder="Enter Tags separated by comma" {% if blogPost %} value="{{ blogPost.tags|join(',') }}" {% endif %}>
+	</div>
+  	<button type="submit" class="btn btn-default">Submit</button>
+</form>
+{% endblock content %}

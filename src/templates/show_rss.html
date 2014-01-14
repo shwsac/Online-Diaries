@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<channel>
+	<title>Blog Information</title>
+	<link>{{ baseUrl }}/blogs/{{ blog.key().id() }}/posts</link>
+	<description> {{ blog.title }} </description>
+	<atom:link href="{{ request.url }}" rel="self" type="application/rss+xml" />
+	
+	{% for post in blogPosts %}
+	<item>
+		<title><![CDATA[{{post.title}}]]></title>
+		<link>{{ baseUrl }}/blogs/{{ blog.key().id() }}/posts/{{ post.key().id() }}</link>
+		<description>{{ post.body|escape }}</description>
+		<author>{{ blog.author|escape }}</author>
+	</item>
+	{% endfor %}
+</channel>
+</rss>

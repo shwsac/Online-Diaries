@@ -1,0 +1,47 @@
+{% extends "base.html" %} {% block content %}
+<div class = "well">
+<h4>{{ blog.title }}</h4>
+</div>
+
+<ul class="pager">
+	<li><a
+		href="/blogs/{{ blog.key().id() }}/posts/rss">RSS</a></li>
+</ul>
+{% for post in blogPosts %}
+<div class="panel panel-default">
+	<div class="panel-heading">
+		<h3 class="panel-title">{{ post.title }}</h3>
+	</div>
+	<div class="panel-body" style="white-space: pre-wrap;">{{ post.body|safe|truncate(500)|urlize }}</div>
+	<div class="panel-footer">
+		<small>created on: {{ post.created_on.strftime('%Y-%m-%d
+			%H:%M') }}</small> <small>modified on: {{
+			post.modified_on.strftime('%Y-%m-%d %H:%M') }}</small> <label>tags:</label>
+		{% for tag in post.tags %} <small><a class="btn btn-default"
+			href="/blogs/{{ blog.key().id() }}/posts/tag/{{tag}}">{{tag}}</a></small> {%
+		endfor %}
+		<div class="pull-right">
+			<a class="btn btn-default"
+				href="/blogs/{{ blog.key().id() }}/posts/{{ post.key().id() }}">Read
+				Full Post</a>
+		</div>
+	</div>
+</div>
+{% else %}
+<p>There are currently no posts created for this blog. Please check
+	by again later.</p>
+<p>If this is your blog, please go to the dashboard (after logging
+	in) and create a new post!</p>
+{% endfor %} {% if hasMore %}
+<ul class="pager">
+	<li class="next"><a href="?bookmark={{ bookmark }}">Older
+			&rarr;</a></li>
+</ul>
+{% endif %} {% if taglist %}
+<div class="well">
+	<label>taglist:</label> {% for tag in taglist %} <small><a
+		class="btn btn-default"
+		href="/blogs/{{ blog.key().id() }}/posts/tag/{{tag}}">{{tag}}</a></small> {%
+	endfor %}
+</div>
+{% endif %} {% endblock content %}
